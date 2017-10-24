@@ -1,4 +1,4 @@
-const Condition = require('./Condition.js');
+// const Condition = require('./Condition.js');
 
 const policyTypes = [
   {
@@ -53,11 +53,11 @@ class Policy {
 
     calculateEstimate() {
       this.adjustedBasePrice = this.applyAdjustments();
-      this.estimateTotal = this.adjustedBasePrice - this.genderDiscount();
+      this.estimateTotal = (this.adjustedBasePrice - this.genderDiscount()).toFixed(2);
 
-      return this.estimateTotal.toFixed(2);
+      return this.estimateTotal;
     }
 
 }
 
-module.exports = Policy;
+// module.exports = Policy;

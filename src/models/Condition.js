@@ -21,4 +21,4 @@ class Condition {
 
 }
 
-module.exports = Condition;
+// module.exports = Condition;

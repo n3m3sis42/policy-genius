@@ -14,13 +14,14 @@
     <header>
         <div class="header-text-box">
             <h1>TICKLE Policy Estimator</h1>
+            <a class="btn js--scroll-to-form" href="#">Get Started</a>
         </div>
     </header>
-    <section class="get-estimate">
-      <div class="row">
+    <section class="get-estimate js--get-estimate">
+      <div class="row" id="estimate-header">
           <h2>Get Your Estimate Now!</h2>
       </div>
-      <div class="row">
+      <div class="row" id="estimate-main">
           <form onSubmit="getEstimate(event)" class="estimate-form">
               <div class="row">
                   <div class="col span-1-of-3">
@@ -63,17 +64,19 @@
                       </select>
                   </div>
               </div>
+              <br />
               <div class="row">
                   <div class="col span-1-of-3">
                       <label>&nbsp;</label>
                   </div>
                   <div class="col span-2-of-3">
-                      <input type="submit" value="See Your Estimate!" />
+                      <input type="submit" value="See Your Estimate" />
                   </div>
               </div>
           </form>
       </div>
     </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script type="text/javascript" src='src/models/Policy.js'></script>
     <script type="text/javascript" src='src/models/Person.js'></script>
     <script type="text/javascript" src='src/models/Condition.js'></script>

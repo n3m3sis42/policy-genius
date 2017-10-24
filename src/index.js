@@ -1,5 +1,22 @@
-const displayEstimate = (policy) => {
+$(document).ready(function() {
+  /* scroll to estimate form when button is clicked */
+  $('.js--scroll-to-form').click(function() {
+    $('html, body').animate({ scrollTop: $('.js--get-estimate').offset().top }, 1000);
+  });
+});
 
+const displayEstimate = (policy) => {
+  const form = document.querySelector('.estimate-form');
+  form.hidden = true;
+
+  const header = document.querySelector('#estimate-header');
+  const main = document.querySelector('#estimate-main');
+
+  const { name } = policy.person;
+  const { estimateTotal } = policy;
+
+  header.innerHTML = '<h2>Your estimate is ready!</h2>';
+  main.innerHTML = `<p>${name}, your estimate is $${estimateTotal}. Please refresh the page if you'd like another quote.</p>`;
 }
 
 const getEstimate = (event) => {
@@ -16,15 +33,6 @@ const getEstimate = (event) => {
   const estimate = policy.calculateEstimate();
 
   form.reset();
+
   displayEstimate(policy);
-  // NOTE watch HTML/CSS tutorial to see how to submit form and redraw the page 
-
-  console.log(person);
-  console.log(policy);
-  console.log(estimate);
-
-
-  debugger;
 }
-
-// document.getElementById('estimate-form').addEventListener('submit', getEstimate, false);
