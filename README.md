@@ -1,13 +1,6 @@
 # TICKLE Policy Estimator - Sarah G Evans 
 ### (PolicyGenius Code Challenge)
 
-This is a single-page app designed according to the following instructions:
-
-PolicyGenius wants to bring a new life insurance company, Taco Insurance Company of Kentucky and Lower Europe, into the marketplace.
-
-TICKLE has great rates on their policies, but we're not sure if our customers will respond positively to their life insurance claims being paid in the form of tacos. Due to this consideration, we want to build a simple MVP to get TICKLE onto our platform and see if customers are interested in this new product.
-
-You've been asked to build this pricing engine that prints out the estimated policy price for a given person. Keep in mind that this is an MVP that may fail once we launch, or could grow into a large application with very complex pricing rules. Try to strike a balance between creating an application that will be maintainable as it grows, with spending too much time building something that may end up failing.
 
 ##
 
@@ -36,11 +29,30 @@ npm test
 
 Once you are finished testing, please comment the 'require' and 'module.exports' statements out again. This is necessary because I did not set up Babel and Webpack in the interest of saving time, and these keywords will cause errors in the browser.
 
-## Design Decisions:
+##
+
+
+## Rationale and Design Considerations
+
+### Models:
 
 
 
-#### Technologies used: 
+##
+
+
+## Other Notes
+
+This is a single-page app designed according to the following instructions:
+
+PolicyGenius wants to bring a new life insurance company, Taco Insurance Company of Kentucky and Lower Europe, into the marketplace.
+
+TICKLE has great rates on their policies, but we're not sure if our customers will respond positively to their life insurance claims being paid in the form of tacos. Due to this consideration, we want to build a simple MVP to get TICKLE onto our platform and see if customers are interested in this new product.
+
+You've been asked to build this pricing engine that prints out the estimated policy price for a given person. Keep in mind that this is an MVP that may fail once we launch, or could grow into a large application with very complex pricing rules. Try to strike a balance between creating an application that will be maintainable as it grows, with spending too much time building something that may end up failing.
+
+
+### Technologies used: 
 
 * JavaScript
 * JQuery (for scrolling navigation to estimate form only)
