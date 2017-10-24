@@ -4,8 +4,6 @@ Since we'd likely handle more than one type of policy for this insurance vendor,
 
 Similarly, I chose to hard code gender and conditions as objects in the store and write find methods for them in index.js rather than building out models for them. I made this decision because the use cases for gender and condition were fairly simple in this version of the app, and would likely change in future iterations. Additionally, if we built out the app later, it would more than likely use a database and one or more frameworks, which might change how we stored and searched for these values.
 
-I added IDs to the policy type, condition and gender objects to make it easier to visualize how they might later be stored in a database. For the same reason, I used closures in my Policy and Person models; this allowed me to generate an ID each time I created a Policy or Person instance. However, at present, I am not using the IDs -- they're only there to simulate a database schema.
-
 While I considered adding logic to check whether a person has already submitted a quote request, this seemed unnecessary since the estimates are not currently stored in a database.
 
 In the interest of time, I made the instance methods for the various adjustments on the Policy class less generic/flexible than I would have preferred. It would be easier to make them more flexible if I knew more about what types of adjustments might be likely to exist for other types of policies.
@@ -17,7 +15,7 @@ TO RUN TESTS
 Run the following commands in the root directory:
 npm install mocha -g
 npm install chai
-mocha --reporter=nyan tests/policy-spec.js
+mocha --reporter=nyan test/policy-spec.js
 
 HOW TO ROUND TOTAL PRICE TO TWO DECIMAL PLACES
 policy.estimate.totalPrice.toFixed(2)

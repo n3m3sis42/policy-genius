@@ -1,55 +1,45 @@
-function createPolicy() {
-  let id = 0;
+const policyTypes = [
+  {
+    name: "TICKLE Life Insurance Plan",
+    description: "Pays claims in the form of tacos",
+    minAge: 18,
+    maxAge: null,
+    basePrice: 100.00
+  }
+];
 
-  return class {
-    constructor(person, policyType = store.policyTypes[0]) {
+class Policy {
+    constructor(person, policyType = policyTypes[0]) {
       this.type = policyType;
       this.person = person;
-      this.id = ++id;
-      store.policies.push(this);
     }
 
     genderAdjustment() {
-      const { gender } = this.person;
-      return gender.adjustment || 0;
+      return this.person.gender === 'female' ? -12 : 0;
     }
 
     ageAdjustment() {
-      const { age } = this.person;
-      const { minAge } = this.type;
-      return Math.floor((age - minAge) / 5) * 20;
+      return Math.floor((this.person.age - this.type.minAge) / 5) * 20;
     }
 
-    conditionAdjustment() {
+    conditionMultiplier() {
       const { condition } = this.person;
-      return condition.costIncrease || 0;
-    }
-
-    calculateTotalPrice(adjustments) {
-      const { genderAdjustment, ageAdjustment, conditionAdjustment } = adjustments;
-      const { basePrice } = this.type;
-      const total = basePrice + genderAdjustment + ageAdjustment;
-      return total + (total * conditionAdjustment);
+      return Condition.find(condition).costMultiplier || 0;
     }
 
     calculateEstimate() {
       const { basePrice } = this.type;
-      const adjustments = {
-        genderAdjustment: this.genderAdjustment(),
-        ageAdjustment: this.ageAdjustment(),
-        conditionAdjustment: this.conditionAdjustment()
-      }
+      const genderAdjustment = this.genderAdjustment();
+      const ageAdjustment = this.ageAdjustment();
+      const conditionMultiplier =  this.conditionMultiplier();
 
-      this.estimate = {
-        basePrice: basePrice,
-        adjustments: adjustments,
-        totalPrice: this.calculateTotalPrice(adjustments)
-      }
+      const subtotal = basePrice + genderAdjustment + ageAdjustment;
+      const conditionAdjustment = subtotal * conditionMultiplier;
+      const total = subtotal + conditionAdjustment;
 
-      return this.estimate;
+      return total.toFixed(2);
     }
 
-  }
 }
 
-let Policy = createPolicy();
+module.exports = Policy;

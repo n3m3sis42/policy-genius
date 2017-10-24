@@ -1,0 +1,26 @@
+{
+  "name": "policy-genius",
+  "version": "1.0.0",
+  "description": "TICKLE estimate app",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha --reporter=nyan"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/n3m3sis42/policy-genius.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/n3m3sis42/policy-genius/issues"
+  },
+  "homepage": "https://github.com/n3m3sis42/policy-genius#readme",
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}

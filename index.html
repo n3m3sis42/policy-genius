@@ -43,7 +43,11 @@
                     <label for="gender">Gender</label>
                 </div>
                 <div class="col span-2-of-3">
-                    <input type="text" name="gender" id="gender" required />
+                  <select name="gender" id="gender">
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                      <option value="other" selected>Other</option>
+                  </select>
                 </div>
               </div>
               <div class="row">
@@ -72,7 +76,7 @@
     </section>
     <script type="text/javascript" src='src/models/Policy.js'></script>
     <script type="text/javascript" src='src/models/Person.js'></script>
-    <script type="text/javascript" src='src/data/store.js'></script>
+    <script type="text/javascript" src='src/models/Condition.js'></script>
     <script type="text/javascript" src='src/index.js'></script>
   </body>
 </html>
