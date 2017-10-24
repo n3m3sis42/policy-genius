@@ -1,6 +1,5 @@
 # TICKLE Policy Estimator - Sarah G Evans 
 
-##
 
 ## How to Use
 
@@ -65,6 +64,7 @@ As noted above, the MVP pulls data about policy types and health conditions from
 
 The format of these objects is shown below.
 
+```
 const conditions = [
     {
       name: 'Allergies',
@@ -79,7 +79,9 @@ const conditions = [
       costMultiplier: .17
     }
 ];
+```
 
+```
 const policyTypes = [
   {
     name: "TICKLE Life Insurance Plan",
@@ -89,6 +91,7 @@ const policyTypes = [
     basePrice: 100.00
   }
 ];
+```
 
 ### Additional Considerations
 
