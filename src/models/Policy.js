@@ -29,14 +29,16 @@ class Policy {
 
     calculateEstimate() {
       const { basePrice } = this.type;
-      const genderAdjustment = this.genderAdjustment();
+
       const ageAdjustment = this.ageAdjustment();
+      const genderAdjustment = this.genderAdjustment();
       const conditionMultiplier =  this.conditionMultiplier();
 
-      const subtotal = basePrice + genderAdjustment + ageAdjustment;
-      const conditionAdjustment = subtotal * conditionMultiplier;
-      const total = subtotal + conditionAdjustment;
+      const adjustedBasePrice = basePrice + ageAdjustment;
+      const conditionAdjustment = adjustedBasePrice * conditionMultiplier;
 
+      const total = adjustedBasePrice + conditionAdjustment + genderAdjustment;
+    
       return total.toFixed(2);
     }
 
