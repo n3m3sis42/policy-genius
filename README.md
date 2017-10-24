@@ -1,31 +1,36 @@
 # TICKLE Policy Estimator - Sarah G Evans 
-### (PolicyGenius Code Challenge)
 
 ##
 
 ## How to Use
 
-### To Run the App:
+### Running the App
 
 * Go the the policy-genius directory and type open index.html.
 * Click the Get Started button or manually scroll down to the estimate form.
 * Submit the form to display your estimate.
 * To calculate another estimate after submitting, just refresh the page.
 
-### To Run Tests:
+### Running Tests
 
 * Uncomment the 'require' and 'module.exports' statements in the following files:
+```
 Condition.js
 Person.js
 Policy.js
+```
 
 * Run the following commands from the root directory:
+```
 cd policy-genius
 npm install mocha -g
 npm install chai
 npm test
+```
 
-Once you are finished testing, please comment the 'require' and 'module.exports' statements out again. This is necessary because I did not set up Babel and Webpack in the interest of saving time, and these keywords will cause errors in the browser.
+Once you are finished testing, please comment the 'require' and 'module.exports' statements out again. 
+
+This is necessary because I did not set up Babel and Webpack in the interest of saving time, and these keywords will cause errors in the browser.
 
 ##
 
