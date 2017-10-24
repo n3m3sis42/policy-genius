@@ -16,6 +16,18 @@ let store = {
       costIncrease: .17
     }
   ],
+  genders: [
+    {
+      id: 1,
+      name: "female",
+      adjustment: -12.00
+    },
+    {
+      id: 2,
+      name: "male",
+      adjustment: 0.00
+    }
+  ],
   policyTypes: [
     {
       id: 1,
@@ -23,8 +35,7 @@ let store = {
       description: "Pays claims in the form of tacos",
       minAge: 18,
       maxAge: null,
-      basePrice: 100.00,
-      conditions: [1, 2, 3]
+      basePrice: 100.00
     }
   ],
   policies: [],

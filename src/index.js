@@ -20,15 +20,20 @@ const findCondition = (conditionName) => {
   return store.conditions.find(condition => {return condition.name === conditionName}) || {}
 }
 
+const findGender = (genderName) => {
+  return store.genders.find(gender => {return gender.name.toLowerCase() === genderName.toLowerCase()}) || {}
+}
+
 const getEstimate = (event) => {
 
   const name = document.querySelector('#name').value;
   const age = parseInt(document.querySelector('#age').value);
-  const gender = document.querySelector('#gender').value;
+  const gender = findGender(document.querySelector('#gender').value);
   const condition =  findCondition(document.querySelector('#condition').value);
 
   const person = new Person(name, age, gender, condition);
   const policy = new Policy(person);
+  return policy.calculateEstimate();
 
   console.log(person);
   console.log(policy);

@@ -1,12 +1,3 @@
-// discounts: [
-//   {
-//     id: 0,
-//     discountType: 'amount',
-//     discountAmt: '12.00',
-//     applyDiscount: (function (price, person) { return person.gender === "female" ? price - 12.00 : price })
-//   }
-// ],
-
 function createPolicy() {
   let id = 0;
 
@@ -20,7 +11,7 @@ function createPolicy() {
 
     genderAdjustment() {
       const { gender } = this.person;
-      return gender === 'female' ? -12 : 0;
+      return gender.adjustment || 0;
     }
 
     ageAdjustment() {
@@ -61,4 +52,4 @@ function createPolicy() {
   }
 }
 
-let Policy = createPolicy()
+let Policy = createPolicy();

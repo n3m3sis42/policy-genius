@@ -1,28 +1,23 @@
 Design Decisions:
 
-Since we'd likely handle more than one policy for this company, I built in the ability to pull the policy and its base price from the data store.
+Since we'd likely handle more than one type of policy for this insurance vendor, I built in the ability to pull base price and minimum age (along with name, description and maximum age for the policy type, even though these aren't in use by the current version of the app) from the policy type. Since there's currently only one policy type, I hardcoded it in the data store rather than creating a PolicyType model. This could be built out in the future.
 
-Discount should have its own model or be part of the Policy model? I think part of the Policy model for now, but would like to break it out later (not sure how without knowing more about what other types of policies/discounts are available)
+Similarly, I chose to hard code gender and conditions as objects in the store and write find methods for them in index.js rather than building out models for them. I made this decision because the use cases for gender and condition were fairly simple in this version of the app, and would likely change in future iterations. Additionally, if we built out the app later, it would more than likely use a database and one or more frameworks, which might change how we stored and searched for these values.
 
-Discount type is 'amount' but could add code later to handle 'percentage' or other discount types
-Hm or can I store/pass a function as the "rule" for the discount
-OR SHOULD I JUST MAKE A FKN MODEL SIGHHH OR WHAT ABOUT IIFEs (what are these even)
+I added IDs to the policy type, condition and gender objects to make it easier to visualize how they might later be stored in a database. For the same reason, I used closures in my Policy and Person models; this allowed me to generate an ID each time I created a Policy or Person instance. However, at present, I am not using the IDs -- they're only there to simulate a database schema.
 
-Conditions are part of the createPolicy closure so we could easily write methods to add and remove conditions for a policy later (and a conditions model)
+While I considered adding logic to check whether a person has already submitted a quote request, this seemed unnecessary since the estimates are not currently stored in a database.
 
-Mocked up conditions and policyTypes in store -- could build these out into models to expand the app
+In the interest of time, I made the instance methods for the various adjustments on the Policy class less generic/flexible than I would have preferred. It would be easier to make them more flexible if I knew more about what types of adjustments might be likely to exist for other types of policies.
 
-*** OR DO I WANT A SELECTOR THAT ALLOWS US TO GRAB THE POLICY TYPE, SIGH ***
+If I were to build out this app further, I'd like the select box for conditions on the form to populate its values dynamically based on the conditions in the store (I hardcoded them in order to finish the app more quickly).
+
+TO RUN TESTS
+
+Run the following commands in the root directory:
+npm install mocha -g
+npm install chai
+mocha --reporter=nyan tests/policy-spec.js
 
 HOW TO ROUND TOTAL PRICE TO TWO DECIMAL PLACES
 policy.estimate.totalPrice.toFixed(2)
-
-check min age in browser and don't allow user to submit the form if they are under that age (don't do check for max age but could add a check in the future)
-
-Didn't add logic to check if user has already received a quote by design - not sure if we'd want to throw an error or not and we're not currently persisting the quotes anyway. Would probably need to add this later.
-
-I thought about passing a function for each discount to apply instead of using hard coded methods in the Policy model, but
-
-Considered storing conditions on policy type or in a separate model. Also considered not saving them to the instance -- explain why I did it this way? Hm maybe actually store only the IDs and put them in the policy type and then look them up? More like a db this way? Idk
-
-Ideally, select box for conditions wouldn't have hardcoded values, but I did this in the interest of time and the ability to provide a somewhat styled user interface
