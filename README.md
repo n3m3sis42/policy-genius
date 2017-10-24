@@ -2,9 +2,6 @@
 ### (PolicyGenius Code Challenge)
 
 
-##
-
-
 ## How to Use
 
 ### To Run the App:
