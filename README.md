@@ -32,9 +32,73 @@ Once you are finished testing, please comment the 'require' and 'module.exports'
 
 ## Rationale and Design Considerations
 
-### Models:
+### Models
 
+* Policy:
+This model contains the code that calculates adjustments, discounts, and the estimate total.
+Each instance of this model represents a single policy estimate.
+This model could later easily be expanded to store data about a customer's active insurance contracts.
+Methods in the Policy model can easily be reused or modified to allow for more complex calculations.
+The constructor for the Policy model accepts a Person object and a policyType object as parameters.
+The policyType object holds the base price, minimum age, and other information related to the type of insurance policy.
+Using the policyType object allows for greater scalability in the future.
+Although I considered building a policyType model, I hardcoded the policyType object in the MVP for the sake of simplicity.
 
+* Condition: 
+At present, this model contains only a static #find method.
+The #find method searches a hardcoded object with a list of conditions and the cost increases associated with them.
+This method allows for clean and reusable code to calculate price adjustments based on health conditions.
+
+* Person:
+This model stores the name, age, gender, and health condition of the person requesting a policy estimate.
+As instructed, it assumes that a user has only one health condition.
+Should we decided to allow multiple health conditions later, instance methods can easily be added to handle this.
+
+### Other data
+
+As noted above, the MVP pulls data about policy types and health conditions from hardcoded objects. I chose to do this for the sake of simplicity, since we currently only use a single policy type and three health conditions. In the future, code can easily be added to create class instances for this data.
+
+The format of these objects is shown below.
+
+const conditions = [
+    {
+      name: 'Allergies',
+      costMultiplier: .01
+    },
+    {
+      name: 'Sleep Apnea',
+      costMultiplier: .06
+    },
+    {
+      name: 'Heart Disease',
+      costMultiplier: .17
+    }
+];
+
+const policyTypes = [
+  {
+    name: "TICKLE Life Insurance Plan",
+    description: "Pays claims in the form of tacos",
+    minAge: 18,
+    maxAge: null,
+    basePrice: 100.00
+  }
+];
+
+### Additional Considerations
+
+* User Interface:
+At present, the values in the Health Condition dropdown box are hardcoded.
+Were this application to be built out further, I'd pull them from the conditions object or a database.
+
+* Validation:
+For the sake of simplicity, the app validates the minimum age through HTML field checks.
+In the future, I might choose to do this validation within the age adjustment code to allow for custom error messages.
+
+* Record IDs:
+I considered mocking up a database by creating my model classes inside closures to allow IDs to be created and incremented.
+Had I gone this route, I'd also have created a store.js file to hold instances of my Person and Policy objects.
+I decided against this option because I felt that it made the app needlessly complex.
 
 ##
 
@@ -50,26 +114,12 @@ TICKLE has great rates on their policies, but we're not sure if our customers wi
 You've been asked to build this pricing engine that prints out the estimated policy price for a given person. Keep in mind that this is an MVP that may fail once we launch, or could grow into a large application with very complex pricing rules. Try to strike a balance between creating an application that will be maintainable as it grows, with spending too much time building something that may end up failing.
 
 
-### Technologies used: 
+##
+
+
+## Technologies used: 
 
 * JavaScript
 * JQuery (for scrolling navigation to estimate form only)
 * Mocha and Chai (for tests)
 * HTML/CSS
-
-
-DESIGN DECISIONS:
-
-Since we'd likely handle more than one type of policy for this insurance vendor, I built in the ability to pull base price and minimum age (along with name, description and maximum age for the policy type, even though these aren't in use by the current version of the app) from the policy type. Since there's currently only one policy type, I hardcoded it in the data store rather than creating a PolicyType model. This could be built out in the future.
-
-Similarly, I chose to hard code gender and conditions as objects in the store and write find methods for them in index.js rather than building out models for them. I made this decision because the use cases for gender and condition were fairly simple in this version of the app, and would likely change in future iterations. Additionally, if we built out the app later, it would more than likely use a database and one or more frameworks, which might change how we stored and searched for these values.
-
-While I considered adding logic to check whether a person has already submitted a quote request, this seemed unnecessary since the estimates are not currently stored in a database.
-
-In the interest of time, I made the instance methods for the various adjustments on the Policy class less generic/flexible than I would have preferred. It would be easier to make them more flexible if I knew more about what types of adjustments might be likely to exist for other types of policies.
-
-If I were to build out this app further, I'd like the select box for conditions on the form to populate its values dynamically based on the conditions in the store (I hardcoded them in order to finish the app more quickly).
-
-I chose to validate the minimum age through the form as opposed to checking it on the back end, but I could have also added validation on my age adjustment methods.
-
-Considered using closures to simulate the generation of a unique ID for each instance of the policy and person models created, and storing them in a store.js file as a way of mocking up a database. However, this seemed more complicated than was necessary for the scope of this app. If we were to build it out further, we'd more than likely use a database and back end framework.
