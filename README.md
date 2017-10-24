@@ -1,4 +1,5 @@
-# TICKLE Policy Estimator - Sarah G Evans (PolicyGenius Code Challenge)
+# TICKLE Policy Estimator - Sarah G Evans 
+### (PolicyGenius Code Challenge)
 
 This is a single-page app designed according to the following instructions:
 
