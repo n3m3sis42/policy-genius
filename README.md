@@ -38,25 +38,25 @@ This is necessary because I did not set up Babel and Webpack in the interest of 
 
 ### Models
 
-* Policy:
-This model contains the code that calculates adjustments, discounts, and the estimate total.
-Each instance of this model represents a single policy estimate.
-This model could later easily be expanded to store data about a customer's active insurance contracts.
-Methods in the Policy model can easily be reused or modified to allow for more complex calculations.
-The constructor for the Policy model accepts a Person object and a policyType object as parameters.
-The policyType object holds the base price, minimum age, and other information related to the type of insurance policy.
-Using the policyType object allows for greater scalability in the future.
-Although I considered building a policyType model, I hardcoded the policyType object in the MVP for the sake of simplicity.
+#### Policy:
+* This model contains the code that calculates adjustments, discounts, and the estimate total.
+* Each instance of this model represents a single policy estimate.
+* This model could later easily be expanded to store data about a customer's active insurance contracts.
+* Methods in the Policy model can easily be reused or modified to allow for more complex calculations.
+* The constructor for the Policy model accepts a Person object and a policyType object as parameters.
+* The policyType object holds the base price, minimum age, and other information related to the type of insurance policy.
+* Using the policyType object allows for greater scalability in the future.
+* Although I considered building a policyType model, I hardcoded the policyType object in the MVP for the sake of simplicity.
 
-* Condition: 
-At present, this model contains only a static #find method.
-The #find method searches a hardcoded object with a list of conditions and the cost increases associated with them.
-This method allows for clean and reusable code to calculate price adjustments based on health conditions.
+#### Condition: 
+* At present, this model contains only a static #find method.
+* The #find method searches a hardcoded object with a list of conditions and the cost increases associated with them.
+* This method allows for clean and reusable code to calculate price adjustments based on health conditions.
 
-* Person:
-This model stores the name, age, gender, and health condition of the person requesting a policy estimate.
-As instructed, it assumes that a user has only one health condition.
-Should we decided to allow multiple health conditions later, instance methods can easily be added to handle this.
+#### Person:
+* This model stores the name, age, gender, and health condition of the person requesting a policy estimate.
+* As instructed, it assumes that a user has only one health condition.
+* Should we decided to allow multiple health conditions later, instance methods can easily be added to handle this.
 
 ### Other data
 
