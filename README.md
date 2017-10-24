@@ -1,4 +1,23 @@
-Design Decisions:
+TO RUN THE APP:
+
+Go the the policy-genius directory and type open index.html to start the app.
+Fill in the form prompts and click the See Your Estimate! button to display your quote.
+
+TO RUN TESTS:
+
+Uncomment the 'require' and 'module.exports' statements in the following files:
+Condition.js
+Person.js
+Policy.js
+
+Run the following commands in the policy-genius directory:
+npm install mocha -g
+npm install chai
+npm test
+
+Once you are finished testing, please comment the 'require' and 'module.exports' statements out again. This is necessary because I did not set up Babel and Webpack in the interest of saving time, and these keywords will cause errors in the browser.
+
+DESIGN DECISIONS:
 
 Since we'd likely handle more than one type of policy for this insurance vendor, I built in the ability to pull base price and minimum age (along with name, description and maximum age for the policy type, even though these aren't in use by the current version of the app) from the policy type. Since there's currently only one policy type, I hardcoded it in the data store rather than creating a PolicyType model. This could be built out in the future.
 
@@ -10,12 +29,6 @@ In the interest of time, I made the instance methods for the various adjustments
 
 If I were to build out this app further, I'd like the select box for conditions on the form to populate its values dynamically based on the conditions in the store (I hardcoded them in order to finish the app more quickly).
 
-TO RUN TESTS
+I chose to validate the minimum age through the form as opposed to checking it on the back end, but I could have also added validation on my age adjustment methods.
 
-Run the following commands in the root directory:
-npm install mocha -g
-npm install chai
-mocha --reporter=nyan test/policy-spec.js
-
-HOW TO ROUND TOTAL PRICE TO TWO DECIMAL PLACES
-policy.estimate.totalPrice.toFixed(2)
+Considered using closures to simulate the generation of a unique ID for each instance of the policy and person models created, and storing them in a store.js file as a way of mocking up a database. However, this seemed more complicated than was necessary for the scope of this app. If we were to build it out further, we'd more than likely use a database and back end framework.
