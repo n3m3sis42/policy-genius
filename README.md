@@ -58,6 +58,8 @@ This is necessary because I did not set up Babel and Webpack in the interest of 
 * As instructed, it assumes that a user has only one health condition.
 * Should we decided to allow multiple health conditions later, instance methods can easily be added to handle this.
 
+##
+
 ### Other data
 
 As noted above, the MVP pulls data about policy types and health conditions from hardcoded objects. I chose to do this for the sake of simplicity, since we currently only use a single policy type and three health conditions. In the future, code can easily be added to create class instances for this data.
@@ -92,6 +94,8 @@ const policyTypes = [
   }
 ];
 ```
+
+##
 
 ### Additional Considerations
 
