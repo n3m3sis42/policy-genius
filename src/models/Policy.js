@@ -37,9 +37,9 @@ class Policy {
       const adjustedBasePrice = basePrice + ageAdjustment;
       const conditionAdjustment = adjustedBasePrice * conditionMultiplier;
 
-      const total = adjustedBasePrice + conditionAdjustment + genderAdjustment;
-    
-      return total.toFixed(2);
+      this.total = adjustedBasePrice + conditionAdjustment + genderAdjustment;
+
+      return this.total.toFixed(2);
     }
 
 }

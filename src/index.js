@@ -1,4 +1,4 @@
-const displayEstimate = () => {
+const displayEstimate = (policy) => {
 
 }
 
@@ -16,7 +16,8 @@ const getEstimate = (event) => {
   const estimate = policy.calculateEstimate();
 
   form.reset();
-  displayEstimate();
+  displayEstimate(policy);
+  // NOTE watch HTML/CSS tutorial to see how to submit form and redraw the page 
 
   console.log(person);
   console.log(policy);
