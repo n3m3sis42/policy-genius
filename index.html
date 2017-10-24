@@ -1,45 +1,75 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
   <head>
-    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/grid.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,300i,400" rel="stylesheet">
     <title>TICKLE Policy Estimator</title>
-    <!-- jQuery library to support Bootstrap -->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <style>
-      input {
-        font-size: 2rem;
-      }
-    </style>
   </head>
 
   <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-          <form id="add-person">
-            <label for="person-firstName">
-              <h3><strong>First Name:</strong></h3>
-            </label>
-            <input type='text' id='person-firstName'/>
-            <label for="person-firstName">
-              <h3><strong>Gender:</strong></h3>
-            </label>
-            <input type='text' id='person-firstName'/>
 
-            <br/><br/>
-            <button class="btn btn-success buttons" type="submit" name="action" onclick="event.preventDefault();saveComment()">
-              Get Policy Estimate
-            </button>
-          </form>
-          <ul id="estimate-list"></ul>
+    <header>
+        <div class="header-text-box">
+            <h1>TICKLE Policy Estimator</h1>
         </div>
+    </header>
+    <section class="get-estimate">
+      <div class="row">
+          <h2>Get Your Estimate Now!</h2>
       </div>
-    </div>
+      <div class="row">
+          <form onSubmit="getEstimate(event)" class="estimate-form">
+              <div class="row">
+                  <div class="col span-1-of-3">
+                      <label for="first-name">First Name</label>
+                  </div>
+                  <div class="col span-2-of-3">
+                      <input type="text" name="name" id="name" required />
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col span-1-of-3">
+                      <label for="age">Age</label>
+                  </div>
+                  <div class="col span-2-of-3">
+                      <input type="number" name="age" id="age" min="18" required />
+                  </div>
+              </div>
+              <div class="row">
+                <div class="col span-1-of-3">
+                    <label for="gender">Gender</label>
+                </div>
+                <div class="col span-2-of-3">
+                    <input type="text" name="gender" id="gender" required />
+                </div>
+              </div>
+              <div class="row">
+                  <div class="col span-1-of-3">
+                      <label for="condition">Health Condition</label>
+                  </div>
+                  <div class="col span-2-of-3">
+                      <select name="condition" id="condition">
+                          <option value="Allergies">Allergies</option>
+                          <option value="Sleep Apnea">Sleep Apnea</option>
+                          <option value="Heart Disease">Heart Disease</option>
+                          <option value="None" selected>None</option>
+                      </select>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col span-1-of-3">
+                      <label>&nbsp;</label>
+                  </div>
+                  <div class="col span-2-of-3">
+                      <input type="submit" value="See Your Estimate!" />
+                  </div>
+              </div>
+          </form>
+      </div>
+    </section>
     <script type="text/javascript" src='src/models/Policy.js'></script>
     <script type="text/javascript" src='src/models/Person.js'></script>
     <script type="text/javascript" src='src/data/store.js'></script>

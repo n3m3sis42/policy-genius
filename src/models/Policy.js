@@ -18,22 +18,45 @@ function createPolicy() {
       store.policies.push(this);
     }
 
-    setGenderAdjustment() {
-      this.genderAdjustment = (this.person.gender === 'female' ? -12.00 : 0.00);
+    genderAdjustment() {
+      const { gender } = this.person;
+      return gender === 'female' ? -12 : 0;
     }
 
-    setAgeAdjustment() {
-      this.ageAdjustment = Math.floor((40 - 18) / 5) * 20
+    ageAdjustment() {
+      const { age } = this.person;
+      const { minAge } = this.type;
+      return Math.floor((age - minAge) / 5) * 20;
     }
 
-    setConditionAdjustment() {
-
+    conditionAdjustment() {
+      const { condition } = this.person;
+      return condition.costIncrease || 0;
     }
 
-    getAdjustedPrice(person) {
-
+    calculateTotalPrice(adjustments) {
+      const { genderAdjustment, ageAdjustment, conditionAdjustment } = adjustments;
+      const { basePrice } = this.type;
+      const total = basePrice + genderAdjustment + ageAdjustment;
+      return total + (total * conditionAdjustment);
     }
 
+    calculateEstimate() {
+      const { basePrice } = this.type;
+      const adjustments = {
+        genderAdjustment: this.genderAdjustment(),
+        ageAdjustment: this.ageAdjustment(),
+        conditionAdjustment: this.conditionAdjustment()
+      }
+
+      this.estimate = {
+        basePrice: basePrice,
+        adjustments: adjustments,
+        totalPrice: this.calculateTotalPrice(adjustments)
+      }
+
+      return this.estimate;
+    }
 
   }
 }

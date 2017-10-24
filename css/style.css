@@ -1,0 +1,132 @@
+/* ------------------------------------------------ */
+/* BASIC SETUP */
+/* ------------------------------------------------ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    background-color: #fff;
+    color: #555;
+    font-family: 'Lato', 'Arial', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+}
+
+/* ------------------------------------------------ */
+/* REUSABLE COMPONENTS */
+/* ------------------------------------------------ */
+
+.row {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+section { padding: 80px 0; }
+
+/* ----- HEADINGS ----- */
+h1,
+h2,
+h3 {
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+h1 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #fff;
+    font-size: 240%;
+    word-spacing: 4px;
+    letter-spacing: 1px;
+}
+
+h2 {
+    font-size: 180%;
+    word-spacing: 2px;
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+h2:after {
+    display: block;
+    height: 2px;
+    background-color: #e67e22;
+    content: " ";
+    width: 100px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+h3 {
+    font-size: 110%;
+    margin-bottom: 15px;
+}
+
+/* ----- BUTTONS ----- */
+input[type=submit] {
+    display: inline-block;
+    padding: 10px 30px;
+    font-weight: 300;
+    text-decoration: none;
+    border-radius: 200px;
+    transition: background-color 0.2s, border 0.2s, color 0.2s;
+    background-color: #e67e22;
+    border: 1px solid #e67e22;
+    color: #fff;
+    margin-right: 15px;
+}
+
+input[type=submit]:hover,
+input[type=submit]:active { background-color: #cf6d17; }
+
+
+/* ------------------------------------------------ */
+/* HEADER */
+/* ------------------------------------------------ */
+
+header {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(img/tacos.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+}
+
+.header-text-box {
+    position: absolute;
+    width: 1140px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+/* ------------------------------------------------ */
+/* FORM */
+/* ------------------------------------------------ */
+
+.estimate-form {
+    width: 60%;
+    margin: 0 auto;
+}
+
+input[type=text],
+input[type=number],
+select {
+    width: 100%;
+    padding: 7px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    font: inherit;
+    color: inherit;
+}
+
+*:focus { outline: none; }

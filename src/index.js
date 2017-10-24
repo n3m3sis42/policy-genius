@@ -15,8 +15,31 @@
 
 // NOTE how to make tests
 // https://jrsinclair.com/articles/2016/gentle-introduction-to-javascript-tdd-intro/
-person = new Person('Josh', 40, 'male', 'Sleep Apnea');
-policy = new Policy(person);
-console.log(person);
-console.log(policy);
-console.log(store);
+
+const findCondition = (conditionName) => {
+  return store.conditions.find(condition => {return condition.name === conditionName}) || {}
+}
+
+const getEstimate = (event) => {
+
+  const name = document.querySelector('#name').value;
+  const age = parseInt(document.querySelector('#age').value);
+  const gender = document.querySelector('#gender').value;
+  const condition =  findCondition(document.querySelector('#condition').value);
+
+  const person = new Person(name, age, gender, condition);
+  const policy = new Policy(person);
+
+  console.log(person);
+  console.log(policy);
+  console.log(store);
+
+
+  debugger;
+  // event.preventDefault();
+  // person = new Person('Josh', 40, 'male', 'Sleep Apnea');
+  // policy = new Policy(person);
+
+}
+
+// document.getElementById('estimate-form').addEventListener('submit', getEstimate, false);

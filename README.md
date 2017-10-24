@@ -14,8 +14,8 @@ Mocked up conditions and policyTypes in store -- could build these out into mode
 
 *** OR DO I WANT A SELECTOR THAT ALLOWS US TO GRAB THE POLICY TYPE, SIGH ***
 
-FIND IN CASE I NEED IT
-store.policyTypes.find(policyType => {return policyType.id === 1})
+HOW TO ROUND TOTAL PRICE TO TWO DECIMAL PLACES
+policy.estimate.totalPrice.toFixed(2)
 
 check min age in browser and don't allow user to submit the form if they are under that age (don't do check for max age but could add a check in the future)
 
@@ -24,3 +24,5 @@ Didn't add logic to check if user has already received a quote by design - not s
 I thought about passing a function for each discount to apply instead of using hard coded methods in the Policy model, but
 
 Considered storing conditions on policy type or in a separate model. Also considered not saving them to the instance -- explain why I did it this way? Hm maybe actually store only the IDs and put them in the policy type and then look them up? More like a db this way? Idk
+
+Ideally, select box for conditions wouldn't have hardcoded values, but I did this in the interest of time and the ability to provide a somewhat styled user interface
