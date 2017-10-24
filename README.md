@@ -9,6 +9,9 @@ TICKLE has great rates on their policies, but we're not sure if our customers wi
 
 You've been asked to build this pricing engine that prints out the estimated policy price for a given person. Keep in mind that this is an MVP that may fail once we launch, or could grow into a large application with very complex pricing rules. Try to strike a balance between creating an application that will be maintainable as it grows, with spending too much time building something that may end up failing.
 
+
+## How to Use
+
 ### To Run the App:
 
 * Go the the policy-genius directory and type open index.html.
